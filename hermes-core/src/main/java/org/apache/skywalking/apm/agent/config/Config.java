@@ -43,8 +43,8 @@ public class Config {
 
 
     public static class Application {
-        public static final String NAME = System.getProperty("octopus.app.name", "unknown");
-        public static final String ENV = System.getProperty("octopus.app.env", "unknown");
+        public static final String NAME = System.getProperty("hermes.app.name", "unknown");
+        public static final String ENV = System.getProperty("hermes.app.env", "unknown");
     }
 
     public static class Plugin {
