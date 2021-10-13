@@ -71,9 +71,9 @@ public class HermesSpanExporter implements SpanExporter {
     }
 
     public static SpanExporter of() {
-        String host = "tracing-analysis-dc-us-east-1.aliyuncs.com";
+        String host = "xxxx";
         int port = 1883;
-        String auth = "1j8swcnon5p@06aafcaa5ecd1ef_1j8swcnon5p@53df7ad2afe8301";
+        String auth = "xxx";
         return new HermesSpanExporter(host, port, auth);
     }
 }
