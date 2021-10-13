@@ -13,6 +13,12 @@ Hermes是提供给Java应用使用的Apm解决方案。
   3. Open-telemetry的baggage相对难用，因此本项目自行实现了baggage.
   4. 开源项目对于Open-telemetry的兼容性较好，CNCF成员，未来可期。  
       
+* 插件.
+    1. elasticsearch: 实现了elasticsearch-rest-client的插件
+    2. lettuce5: 实现了lettuce5的插件，可监控对redis的操作
+    3. jdbc8: 实现了jdbc8的插件，可监控对mysql的操作(该插件的实现是搭配了mybatis5的，单独使用可能有问题)
+    4. threading: 增强了`ThreadPoolExecutor`和`ForkJoinTask`,实现跨线程的链路追踪
+    5. TODO: SpringMVC、Spring Service、RocketMQ、MyBatis...
 
 * UI
   1. 阿里云链路追踪可接受jaeger协议的数据，链路图表功能不错，本项目使用阿里云链路追踪做UI
