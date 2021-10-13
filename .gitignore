@@ -7,3 +7,6 @@
 /hermes-plugins/hermes-plugin-lettuce5/target/
 /hermes-plugins/hermes-plugin-threading/target/
 /hermes-telemetry/target/
+
+.idea
+*.iml
