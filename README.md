@@ -18,7 +18,7 @@ Hermes是提供给Java应用使用的Apm解决方案。
   1. 阿里云链路追踪可接受jaeger协议的数据，链路图表功能不错，本项目使用阿里云链路追踪做UI
   2. 阿里云指标计算和展示需要另外的服务。本项目暂未加上指标采集上报。
   3. elastic-apm兼容原生Open-telemetry协议，图表非常好看，但是需要部署一个elastic-apm-server,架构相对复杂。
-  4. 阿里云链路追踪UI展示：![img_1.png](img_1.png)![img_2.png](img_2.png)![img_3.png](img_3.png)  ![img_4.png](img_4.png)![img_5.png](img_5.png)![img_6.png](img_6.png)![img_7.png](img_7.png)
+  4. 阿里云链路追踪UI展示：![img_1.png](images/img_1.png)![img_2.png](images/img_2.png)![img_3.png](images/img_3.png)  ![img_4.png](images/img_4.png)![img_5.png](images/img_5.png)![img_6.png](images/img_6.png)![img_7.png](images/img_7.png)
 
 * 配置
   1. 应用名和环境  
@@ -26,7 +26,7 @@ Hermes是提供给Java应用使用的Apm解决方案。
      2. hermes.app.env: 环境(例如: dev、test、pre、pro)
   2. 阿里云链路追踪
      1. 需要开通阿里云链路追踪服务
-     2. 查看接入点信息。![img.png](img.png)
+     2. 查看接入点信息。![img.png](images/img.png)
      3. 配置接入点信息  
         1. 打开`HermesSpanExporter`类
         2. 修改of方法里面的host为你的接入点。例如：`host=tracing-analysis-dc-us-east-1.aliyuncs.com`
