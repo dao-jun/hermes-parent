@@ -1,0 +1,5 @@
+jdbc8=org.aries.middleware.hermes.plugin.jdbc8.instrumentations.MysqlDriverInstrumentation
+jdbc8=org.aries.middleware.hermes.plugin.jdbc8.instrumentations.PreparedStatementCreateInstrumentation
+jdbc8=org.aries.middleware.hermes.plugin.jdbc8.instrumentations.PreparedStatementInstrumentation
+jdbc8=org.aries.middleware.hermes.plugin.jdbc8.instrumentations.StatementCreateInstrumentation
+jdbc8=org.aries.middleware.hermes.plugin.jdbc8.instrumentations.StatementInstrumentation

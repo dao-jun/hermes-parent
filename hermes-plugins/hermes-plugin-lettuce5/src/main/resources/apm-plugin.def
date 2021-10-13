@@ -1,0 +1,7 @@
+lettuce5=org.aries.middleware.hermes.plugin.lettuce5.define.AbstractRedisClientInstrumentation
+lettuce5=org.aries.middleware.hermes.plugin.lettuce5.define.AsyncCommandInstrumentation
+lettuce5=org.aries.middleware.hermes.plugin.lettuce5.define.ClientOptionsInstrumentation
+lettuce5=org.aries.middleware.hermes.plugin.lettuce5.define.RedisChannelWriterInstrumentation
+lettuce5=org.aries.middleware.hermes.plugin.lettuce5.define.RedisClientInstrumentation
+lettuce5=org.aries.middleware.hermes.plugin.lettuce5.define.RedisClusterClientInstrumentation
+lettuce5=org.aries.middleware.hermes.plugin.lettuce5.define.RedisCodecInstrumentation

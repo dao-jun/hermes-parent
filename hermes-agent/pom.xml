@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>hermes-parent</artifactId>
+        <groupId>org.aries.middleware</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <premain.class>org.aries.middleware.hermes.agent.HermesAgent</premain.class>
+        <can.redefine.classes>true</can.redefine.classes>
+        <can.retransform.classes>true</can.retransform.classes>
+        <shade.net.bytebuddy.source>net.bytebuddy</shade.net.bytebuddy.source>
+        <shade.package>org.aries.middleware.hermes.dependencies</shade.package>
+        <shade.net.bytebuddy.target>${shade.package}.${shade.net.bytebuddy.source}</shade.net.bytebuddy.target>
+
+        <shade.cn.hutool.source>cn.hutool</shade.cn.hutool.source>
+        <shade.cn.hutool.target>${shade.package}.${shade.cn.hutool.source}</shade.cn.hutool.target>
+
+
+        <shade.com.squareup.okhttp3.source>okhttp3</shade.com.squareup.okhttp3.source>
+        <shade.com.squareup.okhttp3.target>${shade.package}.${shade.com.squareup.okhttp3.source}
+        </shade.com.squareup.okhttp3.target>
+
+        <shade.okhttp3.okio.source>okio</shade.okhttp3.okio.source>
+        <shade.okhttp3.okio.target>${shade.package}.${shade.okhttp3.okio.source}</shade.okhttp3.okio.target>
+
+        <shade.org.checkframework.source>org.checkerframework</shade.org.checkframework.source>
+        <shade.org.checkframework.target>${shade.package}.${shade.org.checkframework.source}
+        </shade.org.checkframework.target>
+
+
+        <shade.io.netty.source>io.netty</shade.io.netty.source>
+        <shade.io.netty.target>${shade.package}.${shade.io.netty.source}</shade.io.netty.target>
+
+        <shade.disruptor.source>com.lmax.disruptor</shade.disruptor.source>
+        <shade.disruptor.target>${shade.package}.${shade.disruptor.source}</shade.disruptor.target>
+
+        <shade.grpc.source>io.grpc</shade.grpc.source>
+        <shade.grpc.target>${shade.package}.${shade.grpc.source}</shade.grpc.target>
+    </properties>
+
+    <artifactId>hermes-agent</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.aries.middleware</groupId>
+            <artifactId>hermes-core</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
+                            <createDependencyReducedPom>true</createDependencyReducedPom>
+                            <createSourcesJar>true</createSourcesJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Premain-Class>${premain.class}</Premain-Class>
+                                        <Can-Redefine-Classes>${can.redefine.classes}</Can-Redefine-Classes>
+                                        <Can-Retransform-Classes>${can.retransform.classes}</Can-Retransform-Classes>
+                                    </manifestEntries>
+                                </transformer>
+                            </transformers>
+                            <relocations>
+                                <relocation>
+                                    <pattern>${shade.net.bytebuddy.source}</pattern>
+                                    <shadedPattern>${shade.net.bytebuddy.target}</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>${shade.disruptor.source}</pattern>
+                                    <shadedPattern>${shade.disruptor.target}</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>${shade.grpc.source}</pattern>
+                                    <shadedPattern>${shade.grpc.target}</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>${shade.cn.hutool.source}</pattern>
+                                    <shadedPattern>${shade.cn.hutool.target}</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>${shade.com.squareup.okhttp3.source}</pattern>
+                                    <shadedPattern>${shade.com.squareup.okhttp3.target}</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>${shade.io.netty.source}</pattern>
+                                    <shadedPattern>${shade.io.netty.target}</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>${shade.okhttp3.okio.source}</pattern>
+                                    <shadedPattern>${shade.okhttp3.okio.target}</shadedPattern>
+                                </relocation>
+
+                                <relocation>
+                                    <pattern>${shade.org.checkframework.source}</pattern>
+                                    <shadedPattern>${shade.org.checkframework.target}</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters>
+                                <filter>
+                                    <artifact>net.bytebuddy:byte-buddy</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/license/ASM</exclude>
+                                        <exclude>META-INF/versions/9/module-info.class</exclude>
+                                        <exclude>META-INF/NOTICE</exclude>
+                                        <exclude>META-INF/LICENSE</exclude>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
+                                    </excludes>
+                                </filter>
+                                <filter>
+                                    <artifact>org.aries.middleware:hermes-core</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <delete dir="${user.home}/Desktop/hermes-agent"/>
+                                <tstamp>
+                                    <format property="TimeSign" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                </tstamp>
+                                <mkdir dir="${project.basedir}/src/main/resources"/>
+                                <exec executable="sh">
+                                    <arg value="-c"/>
+                                    <arg value="echo '${TimeSign}' > '${project.basedir}/src/main/resources/apm-version.txt'"/>
+                                </exec>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${user.home}/Desktop/hermes-agent"/>
+
+                                <copy file="${project.build.directory}/hermes-agent.jar"
+                                      tofile="${user.home}/Desktop/hermes-agent/hermes-agent.jar"
+                                      overwrite="true"/>
+                                <delete file="${project.basedir}/src/main/resources/apm-version.txt"/>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

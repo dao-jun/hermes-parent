@@ -1,0 +1,9 @@
+# Project exclude paths
+/hermes-agent/target/
+/hermes-common/target/
+/hermes-core/target/
+/hermes-plugins/hermes-plugin-elasticsearch/target/
+/hermes-plugins/hermes-plugin-jdbc8/target/
+/hermes-plugins/hermes-plugin-lettuce5/target/
+/hermes-plugins/hermes-plugin-threading/target/
+/hermes-telemetry/target/

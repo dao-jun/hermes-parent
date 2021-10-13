@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>hermes-parent</artifactId>
+        <groupId>org.aries.middleware</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>hermes-telemetry</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <grpc.version>1.40.0</grpc.version>
+        <open-telemetry.version>1.6.0</open-telemetry.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-api</artifactId>
+            <version>${open-telemetry.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aries.middleware</groupId>
+            <artifactId>hermes-common</artifactId>
+        </dependency>
+
+        <!-- open-telemetry dependencies start -->
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-context</artifactId>
+            <version>${open-telemetry.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk-extension-async-processor</artifactId>
+            <version>${open-telemetry.version}-alpha</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.opentelemetry</groupId>
+                    <artifactId>opentelemetry-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>listenablefuture</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-jaeger</artifactId>
+            <version>${open-telemetry.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.opentelemetry</groupId>
+                    <artifactId>opentelemetry-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-protobuf</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-stub</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- open-telemetry dependencies end -->
+
+
+        <!-- google dependencies start -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-api</artifactId>
+            <version>${grpc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-netty</artifactId>
+            <version>${grpc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-protobuf</artifactId>
+            <version>${grpc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+            <version>${grpc.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auto.value</groupId>
+            <artifactId>auto-value</artifactId>
+            <version>1.8.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auto.value</groupId>
+            <artifactId>auto-value-annotations</artifactId>
+            <version>1.7.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- google dependencies end -->
+
+    </dependencies>
+</project>

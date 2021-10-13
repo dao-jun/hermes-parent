@@ -1,0 +1,2 @@
+org.apache.skywalking.apm.agent.service.DefaultBootService
+org.apache.skywalking.apm.agent.service.TelemetryBootService
