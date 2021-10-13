@@ -8,7 +8,7 @@ Hermes是提供给Java应用使用的Apm解决方案。
     
     
 * Tracing协议基于Open-telemetry.
-  1. Skywalking在实现Open-tracing的时候做了一些选择。考虑到OAP对于异步Span的处理，会让一整个TraceSegment完全结束后再上报，有一定的内存压力。
+  1. Skywalking在实现Open-tracing的时候做了一些选择。考虑到OAP对于异步Span的处理，会让一整个TraceSegment完全结束后再上报，有一定的内存压力(弃用该策略不是因为它不好，只是选择不同)。
   2. Open-telemetry相对来说对于内存的使用会小一些，每个Span结束后就会立刻上报。
   3. Open-telemetry的baggage相对难用，因此本项目自行实现了baggage.
   4. 开源项目对于Open-telemetry的兼容性较好，CNCF成员，未来可期。  
